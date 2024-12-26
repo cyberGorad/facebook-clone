@@ -24,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $password = $data["password"];
 
         // Connexion à la base de données
-        $servername = "mysql-tsilavina.alwaysdata.net";
-        $username = "tsilavina";
-        $dbpassword = "tsilavina2610tsilavina2610";
-        $dbname = "tsilavina_2610";
+        $servername = "";
+        $username = "";
+        $dbpassword = "";
+        $dbname = "";
 
         // Créer une connexion
         $conn = new mysqli($servername, $username, $dbpassword, $dbname);
