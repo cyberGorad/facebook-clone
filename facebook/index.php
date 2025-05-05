@@ -49,10 +49,10 @@
 </body>
 </html>
 <?php
-$servername = "mysql-tsilavina.alwaysdata.net";
+$servername = "";
 $username = "tsilavina";
-$password = "tsilavina2610tsilavina2610";
-$dbname = "tsilavina_2610";
+$password = "";
+$dbname = "";
 
 // Créer une connexion
 $conn = new mysqli($servername, $username, $password, $dbname);
